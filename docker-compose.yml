@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  # Backend - Flask
+  server:
+    build: ./server
+    container_name: todo-backend
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: development
+
+  # Frontend - React
+  client:
+    build: ./client
+    container_name: todo-frontend
+    ports:
+      - "80:80"
+    environment:
+      VITE_API_URL: http://localhost:5000
